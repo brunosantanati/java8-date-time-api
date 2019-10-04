@@ -14,6 +14,8 @@ public class NewDateTimeApiExample4 {
 		
 		convertFromOneTimezoneToAnother();
 		
+		compareDateTimeFromDifferentTimezones();
+		
 	}
 
 	private static void convertFromZonedDateTimeToOtherTypes() {
@@ -36,6 +38,17 @@ public class NewDateTimeApiExample4 {
 		
 		ZonedDateTime seoulTimezone = saoPauloTimezone.withZoneSameInstant(ZoneId.of("Asia/Seoul"));
 		System.out.println(seoulTimezone);
+	}
+	
+	private static void compareDateTimeFromDifferentTimezones() {
+		ZonedDateTime tokyo = ZonedDateTime
+				.of(2011, 5, 2, 10, 30, 0, 0, ZoneId.of("Asia/Tokyo"));
+		
+		ZonedDateTime saoPaulo = ZonedDateTime
+				.of(2011, 5, 2, 10, 30, 0, 0, ZoneId.of("America/Sao_Paulo"));
+		
+		tokyo = tokyo.plusHours(12);
+		System.out.println(tokyo.isEqual(saoPaulo));
 	}
 
 }
